@@ -1,0 +1,21 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.2.1",
+    "@tensorflow-models/posenet": "^0.1.2",
+    "@tensorflow/tfjs": "^0.11.6",
+    "ml5": "0.0.8",
+    "p5": "^0.6.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-scripts": "1.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

@@ -7,7 +7,7 @@ let h = window.innerHeight - 80
 let video;
 let poseNet;
 let poses = [];
-let skeletons = [];
+// let skeletons = [];
 
 
 function isAndroid() {
@@ -91,7 +91,7 @@ export default function (p) {
     // p.drawSkeleton();
     p.drawLeash()
     onReady()
-    console.log('poses: ', poses)
+    // console.log('poses: ', poses)
   }
 
   // A function to draw ellipses over the detected keypoints
@@ -123,19 +123,6 @@ export default function (p) {
         } else {
           dog.hide()
         }
-        // else if (keypoint.score > 0.2 && keypoint.part === 'leftEar') {
-        //   ellipse(keypoint.position.x, keypoint.position.y, 20, 20)
-        //   break
-        // } else if (keypoint.score > 0.2 && keypoint.part === 'rightEar') {
-        //   ellipse(keypoint.position.x, keypoint.position.y, 20, 20)
-        //   break
-        // } else if (keypoint.score > 0.2 && keypoint.part === 'leftShoulder') {
-        //   ellipse(keypoint.position.x, keypoint.position.y, 20, 20)
-        //   break
-        // } else if (keypoint.score > 0.2 && keypoint.part === 'rightShoulder') {
-        //   ellipse(keypoint.position.x, keypoint.position.y, 20, 20)
-        //   break
-        // }
       }
     }
   }
@@ -170,14 +157,6 @@ export default function (p) {
     }
   }
 
-  // function makeDiv() {
-  //   myDiv0 = createDiv('this is div 0')
-  //   // myDiv0.parent('vidCanvas')
-  //   let keypoint = poses[0].pose.keypoints[0]
-  //   myDiv0.position(keypoint.position.x, keypoint.position.y)
-  //   myDiv0.style("color", "#FFFFFF")
-  // }
-  // makeDiv()
   // The callback that gets called every time there's an update from the model
   p.gotPoses = function (results) {
     poses = results;

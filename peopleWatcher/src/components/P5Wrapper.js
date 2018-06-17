@@ -31,9 +31,10 @@ export default class P5Wrapper extends Component {
       <div
         id="app-p5_container"
         style={{
-          // width: "100%",
-                 textAlign: "center",
-                 background: 'white' }}
+          width: "88%",
+          overflow: 'hidden',
+          textAlign: "center",
+          background: 'white' }}
       />
     );
   }

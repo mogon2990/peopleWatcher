@@ -2446,7 +2446,11 @@ If you have ideas for more “How To” recipes that should be on this page, [le
 
 ## Icon Credits:
 
-Icons made by https://www.flaticon.com/authors/bogdan-rosu Bogdan Rosu from  https://www.flaticon.com/
-Icons made by http://www.freepik.com Freepik from https://www.flaticon.com/
-Icons made by https://www.flaticon.com/authors/pixel-perfect Pixel perfect from www.flaticon.com
-Icons made by https://www.flaticon.com/authors/dave-gandy Dave Gandy from www.flaticon.com
+Icons made by
+  https://www.flaticon.com/authors/bogdan-rosu Bogdan Rosu
+  http://www.freepik.com Freepik
+  https://www.flaticon.com/authors/pixel-perfect Pixel perfect
+  https://www.flaticon.com/authors/dave-gandy Dave Gandy
+  https://www.flaticon.com/authors/google Google
+  https://www.flaticon.com/authors/simpleicon SimpleIcon
+from  https://www.flaticon.com/

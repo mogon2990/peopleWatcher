@@ -9,7 +9,11 @@ import '../App.css';
 export default class App extends Component {
   constructor() {
     super();
-    this.state = { status: "", slider: 100, value: null };
+    this.state = {
+      status: "",
+      slider: 100,
+      value: null,
+      activeElements: [] };
   }
 
   getValue = (value) => this.setState({ value });

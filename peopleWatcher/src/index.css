@@ -10,6 +10,26 @@ button {
   padding: 20px;
 }
 
+h4 {
+  font-size: 2em;
+  margin: 0 auto;
+  padding: 30px;
+  color: #BDD9D0;
+}
+
 .s1-btn-icon {
   padding: 15px;
 }
+
+.s2-text {
+  font-size: .8em;
+  color: #BDD9D0;
+}
+
+.s2-btn {
+  white-space: normal;
+  max-width: 6em;
+  min-width: 6em;
+  min-height: 6em;
+}
+

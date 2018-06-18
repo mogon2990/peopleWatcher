@@ -1,4 +1,6 @@
 import ml5 from 'ml5'
+import marker from './icons/marker.png'
+import doggy from  './characters/doggy.gif'
 
 let w = window.innerWidth - 190
 let h = window.innerHeight - 80
@@ -25,6 +27,9 @@ function isMobile() {
 export default function (p) {
   let onReady = () => {};
   let props = {};
+  let markers = []
+  let characters = []
+
 
   p.setOnReady = function(cb) {
     onReady = cb;
@@ -37,15 +42,26 @@ export default function (p) {
 
 
   let dog
+  let doggy1
+  // eventually 5 markers
+  let marker1
+  let marker2
   p.preload = function () {
-    dog = p.createImg('../public/runningdog_2.png')
-    // dog.position(-200, 350)
-    dog.style('z-index', '1')
-    dog.hide()
+    marker1 = p.createImg(marker)
+    marker1.hide()
+    markers.push(marker1)
+    // marker2 = p.createImg(marker)
+    // marker2.hide()
+    // markers.push(marker2)
+    doggy1 = p.createImg(doggy)
+    doggy1.hide()
+    characters.push({name: 'doggy1', src: doggy1})
   }
 
   p.setup = function () {
-    p.image(dog, -200, 350)
+    // p.image(dog, -200, 350)
+    // p.image(marker1, 50, 50)
+    // p.image(marker2, 100, 100)
     const mobile = isMobile()
     const canvas = p.createCanvas(w, h);
     canvas.style('margin', '0 auto')
@@ -66,7 +82,7 @@ export default function (p) {
       imageScaleFactor: 0.3,
       outputStride: 16,
       flipHorizontal: false,
-      minConfidence: 0.6,
+      minConfidence: 0.7,
       maxPoseDetections: 5,
       scoreThreshold: 0.5,
       nmsRadius: 20,
@@ -85,19 +101,30 @@ export default function (p) {
 
   //draws the video in the canvas
   p.draw = function () {
+    // console.log('poses: ', poses)
     p.image(video, 0, 0, w, h);
     // We can call both functions to draw all keypoints and the skeletons
     p.drawKeypoints();
     // p.drawSkeleton();
-    p.drawLeash()
     onReady()
+    // console.log('sketch props', props)
+    // props.activeElements.forEach( el => {
+    //   const item = characters.find( char => {
+    //     return el === char.name
+    //   })
+    //   console.log(item)
+    //   item.src.position(50, 50)
+    //   item.src.show()
+    // //   el.src.show()
+    // //   // dog = p.createImg(el)
+    // //   // p.image(dog, 50, 50)
+    // })
     // console.log('poses: ', poses)
   }
 
   // A function to draw ellipses over the detected keypoints
   p.drawKeypoints = function() {
     // Loop through all the poses detected
-    // console.log('poses: ', poses)
     for(let i = 0; i < poses.length; i++) {
       // For each pose detected, loop through all the keypoints
       for(let j = 0; j < poses[i].pose.keypoints.length; j++) {
@@ -105,57 +132,40 @@ export default function (p) {
         let keypoint = poses[i].pose.keypoints[j];
         // console.log(keypoint)
 
-
-        // if (keypoint.score > 0.2 && keypoint.part === 'leftEar') {
-        //   myDiv0 = createDiv('this is div 0')
-        //   myDiv0.position(keypoint.position.x + 10, keypoint.position.y + 40)
-        //   myDiv0.style("color", "#FFFFFF")
-        // }
         // // Only draw an ellipse is the pose probability is bigger than 0.2
-        // if (keypoint.score > 0.2) {
-        //   ellipse(keypoint.position.x, keypoint.position.y, 20, 20);
-        // }
         if (keypoint.score > 0.3 && keypoint.part === 'nose') {
-          dog.show()
-          dog.position(keypoint.position.x + 100, 350)
-          p.ellipse(keypoint.position.x + 200, keypoint.position.y - 150, 20, 20)
+          markers[i] && markers[i].show()
+          markers[i] && markers[i].position(keypoint.position.x + 150, keypoint.position.y - 150)
+          // p.ellipse(keypoint.position.x + 200, keypoint.position.y - 150, 20, 20)
+
+          //the following is hardcoded: will not be in the future
+          props.activeElements[0] &&
+            characters[0] &&
+              characters[0].src.position(keypoint.position.x, 700)
+            props.activeElements[0] &&
+              characters[0] &&
+              characters[0].src.show()
+
           break
         } else {
-          dog.hide()
+          markers[i] && markers[i].hide()
         }
       }
     }
   }
 
   // A function to draw the skeletons
-  p.drawSkeleton = function () {
-    // Loop through all the skeletons detected
-    for(let i = 0; i < poses.length; i++) {
-      // For every skeleton, loop through all body connections
-      for(let j = 0; j < poses[i].skeleton.length; j++) {
-
-        let partA = poses[i].skeleton[j][0];
-        let partB = poses[i].skeleton[j][1];
-        p.line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
-      }
-    }
-  }
-
-  p.drawLeash = function () {
-    for(let i = 0; i < poses.length; i++) {
-      let wrist
-      // For every skeleton, loop through all body connections
-      for(let j = 0; j < poses[i].skeleton.length; j++) {
-        // console.log('poses[i].skeleton: ', poses[i].skeleton)
-        // console.log('poses[i].skeleton[j]', poses[i].skeleton[j])
-        if (poses[i].skeleton[j].part === 'leftWrist' || poses[i].skeleton[j].part === 'rightWrist') {
-          wrist = poses[i].skeleton[j]
-          // console.log(wrist)
-          p.line(wrist.position.x, wrist.position.y, wrist.position.x + 30, 350);
-        }
-      }
-    }
-  }
+  // p.drawSkeleton = function () {
+  //   // Loop through all the skeletons detected
+  //   for(let i = 0; i < poses.length; i++) {
+  //     // For every skeleton, loop through all body connections
+  //     for(let j = 0; j < poses[i].skeleton.length; j++) {
+  //       let partA = poses[i].skeleton[j][0];
+  //       let partB = poses[i].skeleton[j][1];
+  //       p.line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
+  //     }
+  //   }
+  // }
 
   // The callback that gets called every time there's an update from the model
   p.gotPoses = function (results) {

@@ -33,3 +33,18 @@ h4 {
   min-height: 6em;
 }
 
+.s2-btn-icon {
+  padding: 15px;
+}
+
+.s3-btn {
+  /* margin: 0 auto; */
+  border: none;
+  background: transparent;
+  max-height: 7em;
+}
+
+.s3-btn-img {
+  max-height: 7em;
+}
+

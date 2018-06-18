@@ -15,7 +15,7 @@ export default class P5Wrapper extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.canvas.pushProps({ ...this.props.p5Props, getValue: this.props.getValue });
+    this.canvas.pushProps({ ...this.props.p5Props, activeElements: this.props.activeElements });
   }
 
   shouldComponentUpdate() { // just in case :)

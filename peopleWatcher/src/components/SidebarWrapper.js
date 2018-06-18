@@ -20,6 +20,7 @@ export default class SidebarWrapper extends Component {
   }
 
   render() {
+    const { addActiveElement } = this.props
     return (
       <div className='container' style={{
         maxWidth: '12%',
@@ -38,6 +39,7 @@ export default class SidebarWrapper extends Component {
           <Sidebar3
             selectSidebar={this.selectSidebar}
             subSelected={this.state.subSelected}
+            addActiveElement={addActiveElement}
             key={this.state.selected}/>}
       </div>
     )

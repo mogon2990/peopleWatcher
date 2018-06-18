@@ -22,6 +22,11 @@ export default class App extends Component {
 
   onSliderChange = (event) => this.setState({ slider: +event.target.value });
 
+  addActiveElement = (evt, el) => {
+    evt.preventDefault()
+    this.setState({activeElements: [...this.state.activeElements, el]})
+  }
+
   render() {
     return (
     <div className="App">
@@ -32,9 +37,10 @@ export default class App extends Component {
       <div className='row'>
 
         <P5Wrapper
-          // p5Props={{ slider: this.state.slider }}
+          // p5Props={{ activeElements: this.state.activeElements }}
           // getValue={this.getValue}
           onReady={this.onReady}
+          activeElements={this.state.activeElements}
         />
         {/* <div style={{ textAlign: "center" }}>
           <strong>{this.state.slider}</strong>
@@ -56,7 +62,7 @@ export default class App extends Component {
             <img border="0" alt="github logo" src="/img/github-logo.png" width="auto" height="28px" style={{ verticalAlign: "middle" }}/>
           </a>
         </p> */}
-        <SidebarWrapper />
+        <SidebarWrapper addActiveElement={this.addActiveElement}/>
         </div>
       </div>
     );

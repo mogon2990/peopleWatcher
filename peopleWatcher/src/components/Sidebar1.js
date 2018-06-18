@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import walking from '../icons/walking.png'
 import group from '../icons/women.png'
 import single from '../icons/standing-up-man-.png'
@@ -24,7 +24,7 @@ const Sidebar1 = props => {
       <button
         type="button"
         className="btn btn-raised btn-primary btn-lg"
-        onClick={(evt) => selectSidebar(evt, 'Sidebar2')}>
+        onClick={(evt) => selectSidebar(evt, 'Sidebar2', 'single')}>
         <img src={single} className="s1-btn-icon" /></button>
       <button
         type="button"

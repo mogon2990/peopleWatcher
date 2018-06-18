@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import backArrow from '../icons/back-arrow.png'
 import friends from '../icons/friends.png'
 import microphone from '../icons/microphone.png'
 import hat from '../icons/hat.png'
+import puppy from '../icons/puppy.png'
+import dino from '../icons/dino.png'
 // import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
 
@@ -10,9 +12,10 @@ import hat from '../icons/hat.png'
 const btnMap = {
   walking: [],
   group: [{name:'Make Friends', icon: friends},
-          {name: 'Gather The Band', icon: microphone},
-          {name:'Hats', icon: hat}],
-  single: [],
+          {name: 'Gather The Band', icon: microphone}],
+  single: [{name: 'Puppy Play', icon: puppy},
+           {name: 'Dinosaur Run', icon: dino},
+           {name:'Hats', icon: hat}],
   random: []
 }
 const Sidebar2 = props => {

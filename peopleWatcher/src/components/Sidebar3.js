@@ -1,32 +1,39 @@
-import React, { Component } from 'react'
+import React from 'react'
+// import dog from '../characters/runningdog_2.png'
+import doggy from '../characters/doggyStill.png'
 import backArrow from '../icons/back-arrow.png'
 
 //one day we might get these from a redux store or a db
 const charMap = {
-  'Make Friends': [{name: 'person1', img: ''}, {name:'person2', img: ''}]
+  'Puppy Play': [{name: 'doggy1', img: doggy}]
 }
 const Sidebar3 = props => {
-  const { subSelected, selectSidebar } = props
+  const { subSelected, selectSidebar, addActiveElement } = props
   return (
     <div>
-      {charMap[subSelected].map( el => {
-        return (
-          <button
-            type="button"
-            key={el.name}
-            onClick={() => {}}>
-            <img src={el.img} className="s3-btn-icon" />
-            <p>{el.name}</p>
-          </button>
-        )
-      })}
+      <div style={{minHeight: '600px'}}>
+        {charMap[subSelected].map( el => {
+          return (
+            <button
+              type="button"
+              className="s3-btn"
+              key={el.name}
+              onClick={(evt) => addActiveElement(evt, el.name)}>
+              <img src={el.img} className="s3-btn-img" />
+              <p>{el.name}</p>
+            </button>
+          )
+        })}
+      </div>
+      <div>
         <button
           type="button"
           className="btn btn-raised btn-primary btn-lg s1-btn"
-          //currently hardcoded to go back to group !
-          onClick={(evt) => selectSidebar(evt, 'Sidebar2', 'group')}>
+          //currently hardcoded to go back to single !
+          onClick={(evt) => selectSidebar(evt, 'Sidebar2', 'single')}>
           <img src={backArrow} className="s1-btn-icon" />
-      </button>
+        </button>
+      </div>
     </div>
   )
 }

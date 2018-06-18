@@ -20,7 +20,7 @@ const Sidebar3 = props => {
               key={el.name}
               onClick={(evt) => addActiveElement(evt, el.name)}>
               <img src={el.img} className="s3-btn-img" />
-              <p>{el.name}</p>
+              <p className="s3-text">{el.name}</p>
             </button>
           )
         })}

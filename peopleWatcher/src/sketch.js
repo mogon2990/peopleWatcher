@@ -2,6 +2,7 @@ import ml5 from 'ml5'
 import marker from './icons/marker.png'
 import doggy from  './characters/doggy.gif'
 
+
 let w = window.innerWidth - 190
 let h = window.innerHeight - 80
 // let w = 1250;
@@ -41,11 +42,11 @@ export default function (p) {
   // console.log(isMobile())
 
 
-  let dog
+  // let dog
   let doggy1
   // eventually 5 markers
   let marker1
-  let marker2
+  // let marker2
   p.preload = function () {
     marker1 = p.createImg(marker)
     marker1.hide()
@@ -90,6 +91,8 @@ export default function (p) {
       multiplier: 0.75,
     }
 
+
+    console.log('hey', ml5, 'hi', poses)
     poseNet = ml5.poseNet(video, options, p.gotPoses);
 
     // Hide the video element, and just show the canvas
@@ -169,6 +172,10 @@ export default function (p) {
 
   // The callback that gets called every time there's an update from the model
   p.gotPoses = function (results) {
-    poses = results;
+    if (results === undefined) {
+      console.log('Results are undefined')
+    } else {
+      poses = results;
+    }
   }
 }

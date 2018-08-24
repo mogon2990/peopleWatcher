@@ -172,10 +172,10 @@ export default function (p) {
 
   // The callback that gets called every time there's an update from the model
   p.gotPoses = function (results) {
-    if (results === undefined) {
-      console.log('Results are undefined')
-    } else {
+    // if (results === undefined) {
+    //   console.log('Results are undefined')
+    // } else {
       poses = results;
-    }
+    // }
   }
 }
